@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Fredoka+One&family=Mochiy+Pop+P+One&family=Poppins:wght@400;500&family=Roboto&display=swap");
+:root {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  --primary-bg: #121316;
+  --secondary-bg: #222529;
+  --primary-accent: #01dfff;
+  --secondary-accent: #01aff8;
+  --third-accent: #1c222c;
+  --text: #fff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--secondary-bg);
+  border: 2px solid var(--secondary-accent);
+  border-radius: 30px;
+}
+body {
+  background: var(--primary-bg);
+  width: 100%;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+/*- START NAVBAR STYLING ---------------------------------------------------------------------------------------------------------------*/
+
+.navbar {
+  z-index: 30;
+  position: fixed;
+  height: 100vh;
+  width: 5rem;
+  border-right: 1px solid var(--secondary-bg);
+  background-color: var(--primary-bg);
+  transition: width 0.2s ease-out, border 0.2s ease-out;
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.navbar-nav li:first-child {
+  margin-bottom: auto;
+}
+.navbar-nav li:last-child {
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+.active {
+  color: var(--secondary-accent);
+}
+.nav-item-logo {
+  margin-top: 1rem;
+}
+.logo {
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+.logo-icon {
+  width: 1.5rem;
+  display: block;
+}
+.nav-icon {
+  font-size: 1.5rem;
+}
+
+.user-picture {
+  width: 1.5rem;
+  clip-path: circle(50% at 50% 50%);
+}
+.link-text {
+  display: none;
+  font-size: 1.3rem;
+}
+.sign-out-link {
+  width: max-content;
+}
+
+/* NAVBAR ANIMATION ON HOVER */
+.navbar:hover {
+  width: fit-content;
+  border-right: 3px solid var(--secondary-accent);
+}
+
+.navbar:hover .navbar-nav {
+  align-items: flex-start;
+  padding: 0 3.9rem;
+}
+
+.navbar:hover .nav-icon,
+.navbar:hover .logo-icon,
+.navbar:hover .user-picture {
+  margin-right: 1rem;
+}
+
+.navbar:hover .link-text {
+  display: block;
+}
+.nav-link:hover {
+  color: var(--secondary-accent);
+}
+.navbar:hover .logo,
+.navbar:hover .userName {
+  color: var(--text);
+}
+/*- END NAVBAR STYLING ---------------------------------------------------------------------------------------------------------------*/
+
+main {
+  margin-left: 5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--secondary-bg);
+  margin-top: 1rem;
+}
+footer p {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 1rem;
+}
+
+/* MEDIA QUERY------------------------------------------------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  main {
+    margin: 0rem;
+  }
+  footer {
+    margin-bottom: 5rem;
+  }
+  .navbar {
+    height: 5rem;
+    width: 100vw;
+    bottom: 0;
+    border-right: none;
+    border-top: 1px solid var(--secondary-bg);
+  }
+  .navbar:hover {
+    border-right: none;
+  }
+
+  .navbar:hover .navbar-nav {
+    align-items: center;
+    padding: 0rem;
+  }
+
+  .navbar:hover .nav-icon,
+  .navbar:hover .logo-icon {
+    margin-right: 0rem;
+  }
+  .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 5rem;
+  }
+  .navbar-nav li:last-child {
+    margin-bottom: 0rem;
+  }
+  .nav-item-logo {
+    display: none;
+  }
+  .navbar:hover .link-text {
+    display: none;
+  }
+}
