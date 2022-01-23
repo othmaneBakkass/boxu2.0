@@ -11,16 +11,48 @@
 </head>
 
 <body>
+    <?php
+    include_once './users_class.php';
+    session_start();
+    $_SESSION['is_logged'] = false;
+
+    $e_msg = "";
+    if (isset($_POST['login'])) {
+        //variables
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        //check if all inputs are filled
+        if (empty($email) || empty($password)) {
+            $e_msg = "Please Fill All the Inputs";
+        } else {
+            //check if user exist in database
+            $checkUser = user::checkUser($email, $password);
+            if ($checkUser == 'user exist') {
+                //store user info in session
+                $getUserInfo = user::saveCurrentUserInfo($email, $password);
+                if ($getUserInfo == 'success') {
+                    $_SESSION['is_logged'] = true;
+                    header("location:index.php?success");
+                } else {
+                    header("location:login.php?failureSavingInfo");
+                }
+            } else {
+                $e_msg = "wrong input";
+            }
+        }
+    }
+
+    ?>
     <main>
         <img src="./imgs/bg.svg" class="bg-img">
-        <form action="">
+        <form action="login.php" method="POST">
             <h2>Login</h2>
-            <input type="text" readonly name="errorMsg" value="something aint right" id="errorMsg">
+            <input type="text" readonly name="errorMsg" value="<?= $e_msg ?>" id="errorMsg">
             <div class="form-top">
                 <label>
-                    username:
+                    email:
                 </label>
-                <input type="text" name="username" id="username">
+                <input type="text" name="email" id="username">
             </div>
             <div class="form-middle">
                 <label>
@@ -34,7 +66,7 @@
                         sign up
                     </a>
                 </button>
-                <button type="submit" id="login">
+                <button type="submit" id="login" name="login">
                     login
                 </button>
             </div>

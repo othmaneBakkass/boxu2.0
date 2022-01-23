@@ -69,6 +69,12 @@ main {
   margin: auto;
 }
 
+.error_msg {
+  font-size: 1.2rem;
+  color: rgb(255, 57, 57);
+  transform: translateY(50px);
+}
+
 .settings-left-side {
   display: flex;
   justify-content: center;
@@ -105,7 +111,8 @@ main {
   color: var(--text);
   border: 1px solid var(--text);
   transition: all 0.2s ease-in;
-  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 0.2rem;
 }
 
 .form-info input:focus {
@@ -126,6 +133,8 @@ main {
   border: none;
   outline: none;
   box-shadow: none;
+  padding: 0;
+  margin: 0;
 }
 .picture-btn {
   border: 1px solid var(--text);

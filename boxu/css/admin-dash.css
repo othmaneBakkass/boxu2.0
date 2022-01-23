@@ -28,11 +28,16 @@ main {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 4rem;
+  text-align: center;
 }
 .number-of-user h4 {
   font-size: 1.5rem;
   font-weight: 400;
-  margin: 5rem 2rem;
+  margin: 2.5rem 2rem;
+}
+
+.number-of-user h4 span {
+  color: var(--secondary-accent);
 }
 .add-product {
   display: flex;
@@ -133,15 +138,7 @@ option {
   flex-direction: column;
   width: 80%;
   margin: auto;
-}
-
-.tables table {
-  border-collapse: collapse;
-  width: 50%;
-  margin: auto;
-  padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background: linear-gradient(55.32deg, #141618 14.17%, #1213165e 73.4%);
+  margin-bottom: 5rem;
 }
 .tables h4 {
   margin: 2rem;
@@ -154,8 +151,17 @@ option {
 .products-table {
   width: 100%;
 }
-.user-table {
-  overflow-x: scroll;
+.products-table::-webkit-scrollbar {
+  width: 0.25rem;
+  overflow-x: hidden;
+}
+.products-table::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+}
+.products-table::-webkit-scrollbar-thumb {
+  background: var(--secondary-bg);
+  border: 2px solid var(--secondary-accent);
+  border-radius: 30px;
 }
 .user-table::-webkit-scrollbar {
   height: 0.9rem;
@@ -168,59 +174,102 @@ option {
   border: 1px solid var(--secondary-accent);
   border-radius: 10px;
 }
-table th,
-table td {
+.user-table {
+  overflow-x: scroll;
+  width: 80%;
+}
+.table-head,
+.table-body {
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: linear-gradient(55.32deg, #141618 14.17%, #1213165e 73.4%);
+}
+.table-head,
+.table-body,
+.table-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-head {
+  border-bottom: 3px solid var(--secondary-accent);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  justify-content: space-evenly;
+  width: 80rem;
+  padding: 0;
+}
+
+.table-body {
+  flex-direction: column;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.table-row {
+  align-self: flex-start;
+  width: 80rem;
+}
+.table-col {
+  flex: 1 1 0px;
+}
+.table-col h6 {
   color: #ffffff;
   font-weight: 400;
   padding: 0.5rem;
   text-transform: capitalize;
-  width: 100%;
+  font-size: 1rem;
+  margin: auto;
+  text-align: center;
 }
-
-table thead tr {
-  border-bottom: 3px solid var(--secondary-accent);
-}
-table td img {
-  width: 2rem;
-}
-table td input {
+.table-col input {
   background: none;
   height: 2rem;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   text-align: center;
   outline: none;
   border: none;
   color: var(--text);
+  width: 100%;
 }
-table td input:focus {
+.table-col input:focus,
+.table-col input:focus-visible {
   outline: none;
   border: none;
   background-color: var(--secondary-bg);
 }
+
 .id:focus {
   background-color: transparent;
 }
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.table-col img {
+  width: 2rem;
+  margin: auto;
+}
+#imageUpdatebtn {
+  width: 90px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+
 .td-btns {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.image-container {
-  position: relative;
-}
-.imageUpdate {
-  position: absolute;
-  background: none;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  top: 10%;
-  right: -10%;
-  cursor: pointer;
-}
-.imageUpdate .icon {
-  color: rgb(85, 231, 129);
-  font-size: 1.3rem;
+.delete,
+.update {
+  width: 5rem;
 }
 .delete {
   background: none;
@@ -242,6 +291,44 @@ table td input:focus {
   margin: 0.5rem 0;
 }
 
+.products-head {
+  width: 60%;
+}
+.products-table .table-body {
+  width: 60%;
+}
+.products-table .table-row {
+  width: 100%;
+}
+
+.error_message {
+  color: rgb(255, 36, 65);
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  transform: translateY(15px);
+}
+
+.success_message {
+  color: rgb(0, 211, 63);
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  transform: translateY(15px);
+}
+.error_message_card {
+  color: rgb(255, 36, 65);
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.success_message_card {
+  color: #00d33f;
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
 @media screen and (max-width: 1024px) {
   .tables {
     width: 90%;
@@ -251,10 +338,28 @@ table td input:focus {
   .products-table {
     overflow-x: scroll;
   }
+  .products-head {
+    width: 80%;
+  }
+  .products-table .table-body {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .cards {
     flex-direction: column;
+  }
+  .products-head {
+    width: 40rem;
+  }
+  .products-table .table-body {
+    width: 40rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .products-table {
+    width: 80%;
   }
 }

@@ -1,0 +1,13 @@
+colors:
+  --primary-bg: #1b1d21;
+  --secondary-bg: #282b30;
+  --primary-accent: #01dfff;
+  --secondary-accent: #01aff8;
+gradient :  linear-gradient(55.32deg, #00FFFF 14.17%, #00D6FF 73.4%);;
+
+fonts:
+font-family: 'Carter One', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Mochiy Pop P One', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
